@@ -57,6 +57,240 @@
             "https://www.mosdac.gov.in/docs/INSAT_AOD_ATBD_revised.doc.pdf"
         ]
     },
+    "insat-3d-data-products": [
+        {
+            "category": "Satellite Data",
+            "satellite": "INSAT-3D",
+            "sensor": "IMAGER",
+            "columns": [
+                "Sr.No",
+                "Product /\nAcq Calendar/Version",
+                "Product Description",
+                "Processing Level",
+                "Temporal Resolution",
+                "Start Date",
+                "End Date",
+                "Processing Status"
+            ],
+            "rows": [
+                [
+                    "1",
+                    "3DIMG_L1B_STD",
+                    "Level1 data for Imager 6 channels at half hour interval",
+                    "L1B",
+                    "HALF HOURLY",
+                    "2013-10-01",
+                    "2024-06-18",
+                    "In-Active",
+                    ""
+                ],
+                [
+                    "2",
+                    "3DIMG_L1C_ASIA_MER",
+                    "IMAGER- 6 channel Level1 data in Mercator projection for Asian Sector",
+                    "L1C",
+                    "HALF HOURLY",
+                    "2013-10-01",
+                    "2024-06-18",
+                    "In-Active",
+                    ""
+                ],
+                [
+                    "3",
+                    "3DIMG_L1C_SGP",
+                    "Level1 IMAGER 6 channel data of TIR1, TIR2, WV, VIS, SWIR, MIR Bands in Mercator projection",
+                    "L1C",
+                    "HALF HOURLY",
+                    "2013-10-01",
+                    "2024-06-18",
+                    "In-Active",
+                    ""
+                ],
+                [
+                    "4",
+                    "3DIMG_L2B_CMK",
+                    "INSAT-3D VHRR measures radiances in one visible and one SWIR band at 1 km spatial resolution, one MIR and two TIR bands at 4 km resolution, and one WV band at 8 km resolution. Radiances from 3 IR spectral bands TIR-1 , TIR-2 and MIR which are of same resolution of 4km are used in the INSAT cloud mask algorithm to estimate whether a given view of the earth surface is unobstructed by clouds",
+                    "L2B",
+                    "HALF HOURLY",
+                    "2013-10-08",
+                    "2024-06-18",
+                    "In-Active",
+                    ""
+                ],
+                [
+                    "5",
+                    "3DIMG_L2B_CTP",
+                    "Cloud top properties derived using INSAT3D IMAGER",
+                    "L2B",
+                    "HALF HOURLY",
+                    "2018-11-30",
+                    "2024-06-18",
+                    "In-Active",
+                    ""
+                ],
+                [
+                    "6",
+                    "3DIMG_L2B_FOG",
+                    "FOG",
+                    "L2B",
+                    "HALF HOURLY",
+                    "2013-09-22",
+                    "2013-11-15",
+                    "In-Active",
+                    ""
+                ],
+                [
+                    "7",
+                    "3DIMG_L2B_HEM",
+                    "This product is derived on the basis of Hydro-Estimator method. It measures precipitation over Indian Region encompassing area between longitudes 30°E -to130°E and latitudes 50°N- 50°S.",
+                    "L2B",
+                    "HALF HOURLY",
+                    "2013-10-08",
+                    "2024-06-18",
+                    "In-Active",
+                    ""
+                ],
+                [
+                    "8",
+                    "3DIMG_L2B_IMC",
+                    "INSAT multispectral Rainfall Algorithm Technique (IMSRA) is one of the main operational rainfall retrieval algorithms for INSAT-3D. This algorithm estimates precipitation based on non-linear power law relationship established between infrared (IR) brightness temperatures (Tbs, 10.7 µm observations) and TRMM-PR surface rain rate. Based on a number of case studies and research works carried out, a further refinement of the algorithm was made.",
+                    "L2B",
+                    "HALF HOURLY",
+                    "2016-01-01",
+                    "2024-06-18",
+                    "In-Active",
+                    ""
+                ],
+                [
+                    "9",
+                    "3DIMG_L2B_LST",
+                    "Land surface temperature (LST) is a key parameter in the land surface processes. LST is very useful input to various models related to agrometeorology, ecology, hydrology and climate.",
+                    "L2B",
+                    "HALF HOURLY",
+                    "2015-03-04",
+                    "2024-06-18",
+                    "In-Active",
+                    ""
+                ],
+                [
+                    "10",
+                    "3DIMG_L2B_OLR",
+                    "Total outgoing longwave radiation (OLR) flux, thermally emitted from earth atmosphere system, is estimated by applying regression equation relating OLR flux with INSAT-3D Imager observed WV (6.7&#956;m) and thermal infrared (TIR-1 10.5 &#956;m and TIR-2 11.5 &#956;m) radiances. The coefficients of the regression equations are determined from results of the Radiative Transfer Model simulation with various atmospheric conditions",
+                    "L2B",
+                    "HALF HOURLY",
+                    "2013-10-01",
+                    "2024-06-18",
+                    "In-Active",
+                    ""
+                ]
+            ]
+        },
+        {
+            "category": "Satellite Data",
+            "satellite": "INSAT-3D",
+            "sensor": "SOUNDER",
+            "columns": [
+                "Sr.No",
+                "Product /\nAcq Calendar/Version",
+                "Product Description",
+                "Processing Level",
+                "Temporal Resolution",
+                "Start Date",
+                "End Date",
+                "Processing Status"
+            ],
+            "rows": [
+                [
+                    "1",
+                    "3DSND_L1B_SA1",
+                    "Sounder Level1 data for A1 sector",
+                    "L1B",
+                    "7 PER DAY",
+                    "2013-10-01",
+                    "2020-05-09",
+                    "In-Active",
+                    ""
+                ],
+                [
+                    "2",
+                    "3DSND_L1B_SA2",
+                    "Sounder Level1 data for A2 sector",
+                    "L1B",
+                    "5 PER DAY",
+                    "2013-10-01",
+                    "2020-05-08",
+                    "In-Active",
+                    ""
+                ],
+                [
+                    "3",
+                    "3DSND_L1B_SB1",
+                    "Sounder Level1 data for B1 sector",
+                    "L1B",
+                    "3 PER DAY",
+                    "2013-10-01",
+                    "2018-12-06",
+                    "In-Active",
+                    ""
+                ],
+                [
+                    "4",
+                    "3DSND_L1B_STD",
+                    "Level1 data for SOUNDER 19 Channels",
+                    "L1B",
+                    "1 HOURLY",
+                    "2014-04-18",
+                    "2018-12-05",
+                    "In-Active",
+                    ""
+                ],
+                [
+                    "5",
+                    "3DSND_L2B_PFL",
+                    "INSAT-3D carries an 18-channel infrared Sounder (plus a visible channel). The algorithm is designed for retrieving vertical profiles of atmospheric temperature and moisture along with total column ozone content in the atmosphere from clear sky infrared radiances in different absorption bands observed through INSAT-3D. Sounder derived profiles include temperature at 40 vertical pressure levels from surface to about 70 km and water vapor in 21 levels from surface to around 15 km.",
+                    "L2B",
+                    "1 HOURLY",
+                    "2013-09-24",
+                    "2013-10-24",
+                    "In-Active",
+                    ""
+                ],
+                [
+                    "6",
+                    "3DSND_L2B_SA1",
+                    "Sounder Level2 data for A1 sector",
+                    "L2B",
+                    "7 PER DAY",
+                    "2013-10-01",
+                    "2020-05-09",
+                    "In-Active",
+                    ""
+                ],
+                [
+                    "7",
+                    "3DSND_L2B_SA2",
+                    "Sounder Level2 data for A2 sector",
+                    "L2B",
+                    "5 PER DAY",
+                    "2013-10-01",
+                    "2020-05-08",
+                    "In-Active",
+                    ""
+                ],
+                [
+                    "8",
+                    "3DSND_L2B_SB1",
+                    "Sounder Level2 data for B1 sector",
+                    "L2B",
+                    "3 PER DAY",
+                    "2013-10-01",
+                    "2018-12-06",
+                    "In-Active",
+                    ""
+                ]
+            ]
+        }
+    ],
     "insat-3dr": {
         "text": "INSAT-3DR is identical to INSAT-3D in terms of Sensors and products. \nINSAT or the Indian National Satellite System is a series of multipurpose Geo-stationary satellites launched by ISRO to satisfy the telecommunications, broadcasting, meteorology, and search and rescue needs of India. Commissioned in 1983, INSAT is the largest domestic communication system in the Asia Pacific Region. The satellite is monitored and controlled by Master Control Facilities that exist in Hassan and Bhopal. INSAT-3DR is a multipurpose geosynchronous spacecraft with main meteorological payloads (imager and sounder). The main objectives for this mission are to provide an operational, environmental and storm warning system to protect life and property. INSAT3DR is monitoring the earth’s surface, oceanic observations and also provide data dissemination capabilities. It provides Broadcast Satellite Services (BSS) through two S-band transponders. The data acquisition and processing system is established at Space Applications Centre, Bopal Campus, Ahmedabad, India. The processing of INSAT-3DR data is taken place broadly in four steps.  \nGround receiving system to receive data\nData Reception (DR) system to generate raw data (L0) files\nData Processing (DP) system to process L0 data and produce L1B data files (Calibrated and Geo located)\nProduct generation and Dissemination system\nIt is positioned at 740 East Longitude.",
         "images": [],
@@ -116,6 +350,218 @@
             "https://www.mosdac.gov.in/docs/INSAT_AOD_ATBD_revised.doc.pdf"
         ]
     },
+    "insat-3dr-data-products": [
+        {
+            "category": "Satellite Data",
+            "satellite": "INSAT-3DR",
+            "sensor": "IMAGER",
+            "columns": [
+                "Sr.No",
+                "Product /\nAcq Calendar/Version",
+                "Product Description",
+                "Processing Level",
+                "Temporal Resolution",
+                "Start Date",
+                "End Date",
+                "Processing Status"
+            ],
+            "rows": [
+                [
+                    "1",
+                    "3RIMG_L1B_STD",
+                    "Level1 data for Imager 6 channels at half hour interval",
+                    "L1B",
+                    "HALF HOURLY",
+                    "2016-10-11",
+                    "2025-03-11",
+                    "Active",
+                    ""
+                ],
+                [
+                    "2",
+                    "3RIMG_L1C_ASIA_MER",
+                    "IMAGER- 6 channel Level1 data in Mercator projection for Asian Sector",
+                    "L1C",
+                    "HALF HOURLY",
+                    "2016-10-03",
+                    "2025-03-11",
+                    "Active",
+                    ""
+                ],
+                [
+                    "3",
+                    "3RIMG_L1C_SGP",
+                    "Level1 IMAGER 6 channel data of TIR1, TIR2, WV, VIS, SWIR, MIR Bands in Mercator projection",
+                    "L1C",
+                    "HALF HOURLY",
+                    "2016-10-03",
+                    "2025-03-11",
+                    "Active",
+                    ""
+                ],
+                [
+                    "4",
+                    "3RIMG_L2B_CMK",
+                    "INSAT-3DR VHRR measures radiances in one visible and one SWIR band at 1 km spatial resolution, one MIR and two TIR bands at 4 km resolution, and one WV band at 8 km resolution. Radiances from 3 IR spectral bands TIR ?1 , TIR ?2 and MIR which are of same resolution of 4km are used in the INSAT cloud mask algorithm to estimate whether a given view of the earth surface is unobstructed by clouds",
+                    "L2B",
+                    "HALF HOURLY",
+                    "2016-10-11",
+                    "2025-03-11",
+                    "Active",
+                    ""
+                ],
+                [
+                    "5",
+                    "3RIMG_L2B_CTP",
+                    "Cloud top properties derived using INSAT3R IMAGER",
+                    "L2B",
+                    "HALF HOURLY",
+                    "2018-11-30",
+                    "2025-03-11",
+                    "Active",
+                    ""
+                ],
+                [
+                    "6",
+                    "3RIMG_L2B_HEM",
+                    "This product is derived on the basis of Hydro-Estimator method. It measures precipitation over Indian Region encompassing area between longitudes 30°E -to130°E and latitudes 50°N- 50°S.",
+                    "L2B",
+                    "HALF HOURLY",
+                    "2016-10-11",
+                    "2025-03-11",
+                    "Active",
+                    ""
+                ],
+                [
+                    "7",
+                    "3RIMG_L2B_IMC",
+                    "INSAT multispectral Rainfall Algorithm Technique (IMSRA) is one of the main operational rainfall retrieval algorithms for INSAT-3DR. This algorithm estimates precipitation based on non-linear power law relationship established between infrared (IR) brightness temperatures (Tbs, 10.7 µm observations) and TRMM-PR surface rain rate. Based on a number of case studies and research works carried out, a further refinement of the algorithm was made.",
+                    "L2B",
+                    "HALF HOURLY",
+                    "2016-11-08",
+                    "2025-03-11",
+                    "Active",
+                    ""
+                ],
+                [
+                    "8",
+                    "3RIMG_L2B_LST",
+                    "Land surface temperature (LST) is a key parameter in the land surface processes. LST is very useful input to various models related to agrometeorology, ecology, hydrology and climate.",
+                    "L2B",
+                    "HALF HOURLY",
+                    "2016-10-11",
+                    "2025-03-11",
+                    "Active",
+                    ""
+                ],
+                [
+                    "9",
+                    "3RIMG_L2B_OLR",
+                    "Total outgoing longwave radiation (OLR) flux, thermally emitted from earth atmosphere system, is estimated by applying regression equation relating OLR flux with INSAT-3DR Imager observed WV (6.7&#956;m) and thermal infrared (TIR-1 10.5 &#956;m and TIR-2 11.5 &#956;m) radiances. The coefficients of the regression equations are determined from results of the Radiative Transfer Model simulation with various atmospheric conditions",
+                    "L2B",
+                    "HALF HOURLY",
+                    "2016-10-11",
+                    "2025-03-11",
+                    "Active",
+                    ""
+                ],
+                [
+                    "10",
+                    "3RIMG_L2B_SST",
+                    "Sea surface temperature is derived from split thermal window channels (TIR1, TIR2) during daytime and using additional mid IR window channel (MIR) during night time over cloud free oceanic regions. The most important part of the SST retrieval from IR observations is the atmospheric correction, especially over tropics. This correction is determined through a suitable characterization of tropical atmospheres in radiative transfer model to simulate the brightness temperatures of INSAT-3DR channels a",
+                    "L2B",
+                    "HALF HOURLY",
+                    "2016-10-11",
+                    "2025-03-11",
+                    "Active",
+                    ""
+                ]
+            ]
+        },
+        {
+            "category": "Satellite Data",
+            "satellite": "INSAT-3DR",
+            "sensor": "SOUNDER",
+            "columns": [
+                "Sr.No",
+                "Product /\nAcq Calendar/Version",
+                "Product Description",
+                "Processing Level",
+                "Temporal Resolution",
+                "Start Date",
+                "End Date",
+                "Processing Status"
+            ],
+            "rows": [
+                [
+                    "1",
+                    "3RSND_L1B_SA1",
+                    "Sounder Level1 data for A1 sector",
+                    "L1B",
+                    "7 PER DAY",
+                    "2016-10-11",
+                    "2025-03-11",
+                    "Active",
+                    ""
+                ],
+                [
+                    "2",
+                    "3RSND_L1B_SA2",
+                    "Sounder Level1 data for A2 sector",
+                    "L1B",
+                    "5 PER DAY",
+                    "2018-02-14",
+                    "2023-02-22",
+                    "Active",
+                    ""
+                ],
+                [
+                    "3",
+                    "3RSND_L1B_SB1",
+                    "Sounder Level1 data for B1 sector",
+                    "L1B",
+                    "3 PER DAY",
+                    "2016-10-11",
+                    "2025-03-11",
+                    "Active",
+                    ""
+                ],
+                [
+                    "4",
+                    "3RSND_L2B_SA1",
+                    "Sounder Level2 data for A1 sector",
+                    "L2B",
+                    "7 PER DAY",
+                    "2016-10-11",
+                    "2025-03-11",
+                    "Active",
+                    ""
+                ],
+                [
+                    "5",
+                    "3RSND_L2B_SA2",
+                    "Sounder Level2 data for A2 sector",
+                    "L2B",
+                    "5 PER DAY",
+                    "2018-01-24",
+                    "2023-02-22",
+                    "Active",
+                    ""
+                ],
+                [
+                    "6",
+                    "3RSND_L2B_SB1",
+                    "Sounder Level2 data for B1 sector",
+                    "L2B",
+                    "3 PER DAY",
+                    "2016-10-11",
+                    "2025-03-11",
+                    "Active",
+                    ""
+                ]
+            ]
+        }
+    ],
     "megha-tropiques": {
         "text": "Megha-Tropiques is an Indo-French Joint Satellite Mission for studying the water cycle and energy exchanges in the tropics. The main objective of this mission is to understand the life cycle of convective systems that influence the tropical weather and climate and their role in associated energy and moisture budget of the atmosphere in tropical regions. Megha-Tropiques provides scientific data on the contribution of the water cycle to the tropical atmosphere, with information on condensed water in clouds, water vapour in the atmosphere, precipitation, and evaporation. With its circular orbit inclined 20 deg to the equator, the Megha-Tropiques is a unique satellite for climate research that should also aid scientists seeking to refine prediction models. The Megha-Tropiques has day, night and all-weather viewing capabilities; it passes over India almost a dozen times every day, giving scientists an almost real- time assessment of the evolution of clouds.",
         "images": [],
@@ -225,6 +671,135 @@
             "https://www.mosdac.gov.in/docs/scatsat_level4_dataproducts.pdf"
         ]
     },
+    "scatsat-1-data-products": [
+        {
+            "category": "Satellite Data",
+            "satellite": "SCATSAT-1",
+            "sensor": "SCATTEROMETER",
+            "columns": [
+                "Sr.No",
+                "Product /\nAcq Calendar/Version",
+                "Product Description",
+                "Processing Level",
+                "Temporal Resolution",
+                "Start Date",
+                "End Date",
+                "Processing Status"
+            ],
+            "rows": [
+                [
+                    "1",
+                    "S1SCT-SIGL1B",
+                    "Scatterometer L1B Product contains time-ordered Earth-located sigma0s",
+                    "L1B",
+                    "29-30 ORBIT/DAY",
+                    "2016-10-18",
+                    "2021-03-01",
+                    "In-Active",
+                    ""
+                ],
+                [
+                    "2",
+                    "S1SCT-SIGL2A25",
+                    "Scatterometer L2A Product contains flagged sigma0s in swath grid",
+                    "L2A",
+                    "29-30 ORBIT/DAY",
+                    "2016-10-18",
+                    "2021-03-01",
+                    "In-Active",
+                    ""
+                ],
+                [
+                    "3",
+                    "S1SCT-SIGL2A50",
+                    "Scatterometer L2A Product contains flagged sigma0s in swath grid",
+                    "L2A",
+                    "29-30 ORBIT/DAY",
+                    "2016-10-18",
+                    "2021-03-01",
+                    "In-Active",
+                    ""
+                ],
+                [
+                    "4",
+                    "S1SCT-SIGL2B25",
+                    "Scatterometer L2B Product contains flagged wind vectors in swath grid",
+                    "L2B",
+                    "29-30 ORBIT/DAY",
+                    "2016-10-18",
+                    "2021-03-01",
+                    "In-Active",
+                    ""
+                ],
+                [
+                    "5",
+                    "S1SCT-SIGL2B50",
+                    "Scatterometer L2B Product contains flagged wind vectors in swath grid",
+                    "L2B",
+                    "29-30 ORBIT/DAY",
+                    "2016-10-18",
+                    "2021-03-01",
+                    "In-Active",
+                    ""
+                ],
+                [
+                    "6",
+                    "S1SCT-SIGL325-HH",
+                    "Scatterometer L3s Product contains flagged sigma0s in global grid",
+                    "L3",
+                    "DAILY",
+                    "2016-10-18",
+                    "2021-03-01",
+                    "In-Active",
+                    ""
+                ],
+                [
+                    "7",
+                    "S1SCT-SIGL325-VV",
+                    "Scatterometer L3s Product contains flagged sigma0s in global grid",
+                    "L3",
+                    "DAILY",
+                    "2016-10-18",
+                    "2021-03-01",
+                    "In-Active",
+                    ""
+                ],
+                [
+                    "8",
+                    "S1SCT-SIGL350-HH",
+                    "Scatterometer L3s Product contains flagged sigma0s in global grid",
+                    "L3",
+                    "DAILY",
+                    "2016-10-18",
+                    "2021-03-01",
+                    "In-Active",
+                    ""
+                ],
+                [
+                    "9",
+                    "S1SCT-SIGL350-VV",
+                    "Scatterometer L3s Product contains flagged sigma0s in global grid",
+                    "L3",
+                    "DAILY",
+                    "2016-10-18",
+                    "2021-03-01",
+                    "In-Active",
+                    ""
+                ],
+                [
+                    "10",
+                    "S1SCT-WWL325",
+                    "Scatterometer L3w Product contains flagged wind vectors in global grid",
+                    "L3",
+                    "DAILY",
+                    "2016-10-18",
+                    "2021-03-01",
+                    "In-Active",
+                    ""
+                ]
+            ]
+        }
+    ],
     "kalpana-1": {
         "text": "Metsat is an exclusive meteorological satellite of ISRO in geo-synchronous orbit. This satellite is developed out of a small I-1000 bus made of carbon fibre re-enforced plastic light weight structure, a uni power bus employing an 18AH Ni-Cd battery and a single GaAs/Ge solar panel generating 640 watts of power. Metsat uses a 3-axis stabilized momentum biased attitude control system with suitable linearly controlled magnetic torquers for solar radiation pressure compensation. A unified propulsion system of bi-propellant apogee motor of 440 Newtons and the reaction control engines of 22 Newtons has been selected for efficient and versatile mission management.\nMetsat carries on-board a Very High ResolutionRadiometer (VHRR) and a Data Relay Transponder (DRT) for weather data transmission. VHRR provides earth imageries in visible band with a resolution of2 km, in thermal infrared and water vapor bands with 8 km. DRT collects weather data from un-attended data collection platforms located throughout India and transmits the same to centrally located Meteorological Data Utilisation Centre. The satellite dry mass is about 495 kg. Metsat was launched on- board upgraded and modified satellite launch vehicle (PSLV) with a lift–off mass of 1060 kgs in September 2002. After successful launch and early orbit operations and in orbit characterization of the Payload, the satellite has been commissioned for routine usage of weather data and imageries.",
         "images": [],
@@ -261,6 +836,135 @@
         ],
         "pdfs": []
     },
+    "kalpana-1-data-products": [
+        {
+            "category": "Satellite Data",
+            "satellite": "KALPANA-1",
+            "sensor": "VHRR",
+            "columns": [
+                "Sr.No",
+                "Product /\nAcq Calendar/Version",
+                "Product Description",
+                "Processing Level",
+                "Temporal Resolution",
+                "Start Date",
+                "End Date",
+                "Processing Status"
+            ],
+            "rows": [
+                [
+                    "1",
+                    "K1-VHR-AMV",
+                    "Cloud Motion Vector and Water Vapour Winds derived from Kalpana IR and WV channel data",
+                    "2",
+                    "HALF HOURLY",
+                    "2009-11-03",
+                    "2012-08-06",
+                    "In-Active",
+                    ""
+                ],
+                [
+                    "2",
+                    "K1-VHR-AMV-VIS",
+                    "Atmospheric Motion Vectors derived using Visible Water vapour and IR bands of Kalpana 1 VHRR data",
+                    "2",
+                    "HALF HOURLY",
+                    "2013-02-21",
+                    "2017-09-16",
+                    "In-Active",
+                    ""
+                ],
+                [
+                    "3",
+                    "K1-VHR-BRT",
+                    "Kalpana IR Brightness Temperature",
+                    "2",
+                    "HALF HOURLY",
+                    "2009-11-03",
+                    "2017-09-19",
+                    "In-Active",
+                    ""
+                ],
+                [
+                    "4",
+                    "K1-VHR-BTW",
+                    "Kalpana WV Brightness Temperature",
+                    "2",
+                    "HALF HOURLY",
+                    "2009-11-03",
+                    "2017-09-19",
+                    "In-Active",
+                    ""
+                ],
+                [
+                    "5",
+                    "K1-VHR-CMK",
+                    "Cloud mask derived using Kalpana-1 IR channel data at every Pixel resolution",
+                    "2",
+                    "HALF HOURLY",
+                    "2010-05-04",
+                    "2011-01-04",
+                    "In-Active",
+                    ""
+                ],
+                [
+                    "6",
+                    "K1-VHR-CMV",
+                    "Cloud Motion Vector derived from Kalpana IR channel data",
+                    "2",
+                    "HALF HOURLY",
+                    "2008-06-01",
+                    "2010-09-08",
+                    "In-Active",
+                    ""
+                ],
+                [
+                    "7",
+                    "K1-VHR-DAILYIMR",
+                    "INSAT Multi Chanel Rain; Rainfall estimate derived using Indian Multi-Spectral Rainfall algorithm (IMSRA)",
+                    "3",
+                    "DAILY",
+                    "2010-06-15",
+                    "2014-04-15",
+                    "In-Active",
+                    ""
+                ],
+                [
+                    "8",
+                    "K1-VHR-DAILYINS",
+                    "Kalpana derived daily insulation product",
+                    "0",
+                    "DAILY",
+                    "2011-07-17",
+                    "2017-09-10",
+                    "In-Active",
+                    ""
+                ],
+                [
+                    "9",
+                    "K1-VHR-DAILYOLR",
+                    "Daily (averaged over previous 24 hr) Outgoing Longwave Radiation derieved from Kalpana - both IR and WV Channel data",
+                    "2",
+                    "DAILY",
+                    "2008-06-01",
+                    "2017-09-19",
+                    "In-Active",
+                    ""
+                ],
+                [
+                    "10",
+                    "K1-VHR-DAILYQPE",
+                    "Daily Accumulated Quantitative Precipitation Estimates based on GPI Algoritham derived using Kalpana IR channel data",
+                    "2",
+                    "DAILY",
+                    "2008-06-01",
+                    "2014-04-15",
+                    "In-Active",
+                    ""
+                ]
+            ]
+        }
+    ],
     "saral-altika": {
         "text": "SARAL mission results from the common interest of both CNES and ISRO in studying ocean from space using altimetry system and in promoting maximum use of the ARGOS Data Collecting System. Radar altimetry by satellite is a technique used in oceanography to measure, globally over the oceans, the sea level needed to understand ocean circulation and its variability. The importance of altimetry data to better understand the ocean circulation and its impact on the climate of the Earth led to the TOPEX/Poseidon and Jason series of satellites complemented by ERS1-2, GFO and ENVISAT. With the launch of these missions began a data collection that must continue well into the century in order to monitor the inter-annual evolution and separate transient phenomena from secular variations. SARAL/AltiKa mission belongs to the global altimetry system and then participates to the precise and accurate observations of ocean circulation and sea surface elevation for its life time. Thus it is the aim of AltiKa part of the SARAL mission to provide altimetric measurements designed to study ocean circulation and sea surface elevation with the same accuracy as the one provided by ENVISAT mission and complementary to Jasons mission. The AltiKa project developed by CNES is based on a large Ka-band altimeter (35.75 GHz, 500MHz), 1st oceanographic altimeter using such a high frequency. The use of the Ka-band frequency will supply more accurate measurements (improvement of the spatial and vertical resolution) enabling a better observation of ices, coastal areas, continental water bodies as well as the waves height. The drawback of this Ka-band frequency is its sensitivity to rain that can lead to signal attenuation. The SARAL/AltiKa mission is part of the operational satellite altimetry system, jointly with Jason-2, and enables to ensure the service continuity which is nowadays provided by ENVISAT altimeter jointly with Jason-2 and Jason-1. By ensuring the observations continuity and widening the observation areas, CNES answers the wish of the oceanography community by bringing a description: For the meso-scale in open ocean,, In coastal areas, For the seasonal forecast, For the hydrology, For the climate studies. AltiKa data will thus contribute, along with data from others altimetry missions, to the development of operational oceanography, to our climate understanding and to the development of forecasting capabilities through data assimilation methods improvement in coupled oceanatmosphere coupling models, bio-chemistry models, etc",
         "images": [],
@@ -292,6 +996,18 @@
         "images": [],
         "tables": [],
         "pdfs": []
+    },
+    "saral-altika-references": {
+        "text": "SARAL Products Handbook  (Size:5.6 MB Format:PDF Tool:PDFViewer)\nSARAL User Products  (Size:957 KB Format:PDF Tool:PDFViewer)",
+        "images": [
+            "https://www.mosdac.gov.in/images/PDF.gif",
+            "https://www.mosdac.gov.in/images/PDF.gif"
+        ],
+        "tables": [],
+        "pdfs": [
+            "https://www.mosdac.gov.in/docs/SALP-MU-M-OP-15984-CN_0102[1]_handbook.pdf",
+            "https://www.mosdac.gov.in/docs/SALP-ST-M-EA-15839-CN_0202[1]_vol20_products.pdf"
+        ]
     },
     "oceansat-2": {
         "text": "Oceansat-2 satellite mainframe systems derive their heritage from previous IRS missions. Oceansat-2 was launched by PSLV-C14 from Satish Dhawan Space Centre, Sriharikota on Sept. 23, 2009. It carries three payloads: Ocean Colour Monitor (OCM) Ku-band Pencil Beam scatterometer (SCAT) developed by ISRO Radio Occultation Sounder for Atmosphere (ROSA) developed by the Italian Space Agency. Oceansat-2 is envisaged to provide continuity of operational services of Oceansat-1(IRS-P4) with enhanced application potential.",
@@ -381,5 +1097,15 @@
         ],
         "tables": [],
         "pdfs": []
+    },
+    "oceansat-3-references": {
+        "text": "OCM_AOD_ATBD  (Size:2.67MB Format:PDF Tool:PDFViewer)",
+        "images": [
+            "https://www.mosdac.gov.in/images/PDF.gif"
+        ],
+        "tables": [],
+        "pdfs": [
+            "https://www.mosdac.gov.in/docs/OCM_AOD_ATBD%20V1_1.pdf"
+        ]
     }
 }
