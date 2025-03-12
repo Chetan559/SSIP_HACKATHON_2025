@@ -1,290 +1,243 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Insight AI Web 🌐</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MOSDAC Website with Chat Button</title>
     <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            padding: 0;
-            background: #f4f7f6;
-            color: #333;
+      /* General page styling (just for demo) */
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #ffffff;
+        height: 100vh;
+      }
+
+      /* Floating chat button styles */
+      .chat-button {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        width: 60px;
+        height: 60px;
+        background-color: #1a3f77;
+        border-radius: 50%;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        z-index: 1000;
+        transition: all 0.3s ease;
+      }
+
+      .chat-button:hover {
+        transform: scale(1.05);
+        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+      }
+
+      .chat-icon {
+        color: white;
+        font-size: 24px;
+      }
+
+      /* Chatbot container styles */
+      .chatbot-container {
+        position: fixed;
+        bottom: 100px;
+        right: 30px;
+        width: 370px;
+        height: 550px;
+        background-color: white;
+        border-radius: 10px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        z-index: 1000;
+        display: none;
+        overflow: hidden;
+        transition: all 0.3s ease;
+        flex-direction: column;
+      }
+
+      .chatbot-header {
+        padding: 15px 20px;
+        background-color: #1a3f77;
+        color: white;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+      }
+
+      .chatbot-title {
+        font-size: 16px;
+        font-weight: 500;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .logo-icon {
+        font-size: 20px;
+      }
+
+      .close-chat {
+        background: none;
+        border: none;
+        color: white;
+        cursor: pointer;
+        font-size: 18px;
+        padding: 0;
+        display: flex;
+        align-items: center;
+      }
+
+      .chatbot-iframe {
+        width: 100%;
+        height: 100%;
+        border: none;
+      }
+
+      /* When chatbot is visible */
+      .show-chatbot {
+        display: flex;
+        animation: fadeIn 0.3s ease;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
         }
 
-        header {
-            background-color: #2c3e50;
-            color: white;
-            padding: 20px;
-            text-align: center;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        to {
+          opacity: 1;
+          transform: translateY(0);
         }
+      }
 
-        header h1 {
-            margin: 0;
-            font-size: 2.0rem;
-            font-weight: 700;
-        }
+      /* Badge for new messages */
+      .notification-badge {
+        position: absolute;
+        top: -5px;
+        right: -5px;
+        background-color: #ff4b4b;
+        color: white;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 12px;
+        font-weight: bold;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+      }
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-
-        .description {
-            background: #ffffff;
-            padding: 30px;
-            border-radius: 12px;
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-            text-align: center;
-            margin-bottom: 30px;
-        }
-
-        .note-container h1 {
-            font-size: 2rem;
-            color: #2c3e50;
-            margin-bottom: 15px;
-        }
-
-        .note-container p {
-            font-size: 1.2rem;
-            color: #7f8c8d;
-        }
-
-        .description h1 {
-            font-size: 2rem;
-            color: #2c3e50;
-            margin-bottom: 15px;
-        }
-
-        .description p {
-            font-size: 1.2rem;
-            color: #7f8c8d;
-        }
-
-        form {
-            background: #ffffff;
-            padding: 30px;
-            border-radius: 12px;
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-            margin-bottom: 30px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        input[type="text"] {
-            width: 100%;
-            max-width: 500px;
-            padding: 15px;
-            margin: 10px 0;
-            border: 1px solid #ccc;
-            border-radius: 8px;
-            font-size: 1rem;
-            box-sizing: border-box;
-        }
-
-        input[type="submit"] {
-            padding: 15px 30px;
-            background-color: #3498db;
-            color: white;
-            border: none;
-            border-radius: 8px;
-            font-size: 1.1rem;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-
-        input[type="submit"]:hover {
-            background-color: #2980b9;
-        }
-
-        #pdf-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin-top: 20px;
-        }
-
-        .pdf-page {
-            margin-bottom: 20px;
-            border: 1px solid #ddd;
-            max-width: 100%;
-            height: auto;
-            border-radius: 8px;
-            display: none;
-        }
-
-        .loader {
-            display: none;
-            text-align: center;
-            margin: 20px 0;
-        }
-
-        .loader div {
-            display: inline-block;
-            width: 1.5rem;
-            height: 1.5rem;
-            margin: 0 0.3rem;
-            background-color: #3498db;
-            border-radius: 50%;
-            animation: wave 1.5s infinite ease-in-out;
-        }
-
-        .loader div:nth-child(2) {
-            animation-delay: 0.2s;
-        }
-
-        .loader div:nth-child(3) {
-            animation-delay: 0.4s;
-        }
-
-        @keyframes wave {
-            0% {
-                transform: scaleY(0.4);
-            }
-
-            50% {
-                transform: scaleY(1);
-            }
-
-            100% {
-                transform: scaleY(0.4);
-            }
-        }
-
-        .controls {
-            margin-top: 30px;
-            display: none;
-            text-align: center;
-        }
-
-        .controls button {
-            padding: 15px 30px;
-            margin: 10px;
-            font-size: 1.1rem;
-            color: #fff;
-            background-color: #2c3e50;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-
-        .controls button:hover {
-            background-color: #34495e;
-        }
-
-        @media (max-width: 768px) {
-            .description h1 {
-                font-size: 1.5rem;
-            }
-
-            .description p {
-                font-size: 1rem;
-            }
-
-            .note-container h1 {
-                font-size: 1.5rem;
-            }
-
-            .note-container p {
-                font-size: 1rem;
-            }
-
-            input[type="text"] {
-                max-width: 100%;
-            }
-
-            .controls button {
-                padding: 12px 20px;
-                font-size: 1rem;
-            }
-        }
-
-        #response-container {
-            background-color: #ffffff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            max-height: 400px;
-            overflow-y: auto;
-            overflow-x: hidden;
-            color: #333;
-        }
-
-        .note-container {
-            background: #ffffff;
-            border-radius: 8px;
-            padding: 20px;
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-            margin: 20px auto;
-            font-size: 1rem;
-            color: #333;
-            text-align: center;
-        }
-
-        .footer {
-            background-color: #2c3e50;
-            color: white;
-            padding: 15px;
-            text-align: center;
-            border-top: 1px solid #ddd;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-
-        .footer p {
-            margin: 5px 0;
-        }
-
-        .footer a {
-            color: #3498db;
-            text-decoration: none;
-        }
-
-        .footer a:hover {
-            text-decoration: underline;
-        }
+      /* Material icons */
+      .material-icons {
+        font-family: "Material Icons";
+        font-weight: normal;
+        font-style: normal;
+        font-size: 24px;
+        line-height: 1;
+        letter-spacing: normal;
+        text-transform: none;
+        display: inline-block;
+        white-space: nowrap;
+        word-wrap: normal;
+        direction: ltr;
+        -webkit-font-feature-settings: "liga";
+        -webkit-font-smoothing: antialiased;
+      }
     </style>
-</head>
 
-<body>
-    <header>
-        <h1>Insight AI Web 🌐</h1>
-    </header>
-    <div class="container">
-        <h2>Discover Insights from Any Web Page 🔍</h2>
-        <form method="post" action="/">
-            <input type="text" name="url" placeholder="Enter URL here 🔗" required>
-            <input type="text" name="extra_field" placeholder="Ask us anything about the website...❓" required>
-            <input type="submit" value="Transform Now 🔄">
-        </form>
+    <!-- Material Icons -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/material-design-icons/3.0.1/iconfont/material-icons.min.css"
+      rel="stylesheet"
+    />
+  </head>
 
-        <div id="response-container"></div>
-        <div class="note-container">
-            <h1>Note 🔔</h1>
-            <p style="text-align: left;">
-                When you click <strong>Transform Now 🔄</strong>, please wait for 10 seconds ⏳. This is for security
-                purposes 🔐 as we first analyze the website you provided 🌐. Once the analysis is complete ✅, the
-                response will be loaded and displayed 📈. Thank you for your patience! 🙏
-            </p>
-        </div>
-
-        <div class="description">
-            <h1>Unlock the Power of Web Intelligence 🔓</h1>
-            <p style="text-align: left;">Discover a new way to interact with web content 🌐. With our advanced AI
-                technology 🤖, you can explore and analyze any website's information effortlessly 💡. Simply enter your
-                questions ❓, and get comprehensive insights in return 🔍. For any inquiries about the website or its
-                features, just type your query ✏️, and receive detailed answers powered by our cutting-edge AI 💬.</p>
-        </div>
+  <body>
+    <!-- Demo content (just for visualization) -->
+    <div style="padding: 20px; text-align: center">
+      <h1>MOSDAC Website</h1>
+      <p>
+        This demonstrates how the chat button would appear on the main website.
+      </p>
     </div>
-    <footer class="footer">
-        <p>&copy; 2024 Insight AI Web 🌐 | All rights reserved.</p>
-        <p>Contact us: <a href="mailto:support@insightaiweb.com">support@insightaiweb.com</a> 📧</p>
-    </footer>
-</body>
 
+    <!-- Floating Chat Button -->
+    <div class="chat-button" id="chatButton">
+      <span class="material-icons chat-icon">chat</span>
+      <div class="notification-badge" id="notificationBadge">1</div>
+    </div>
+
+    <!-- Chatbot Container -->
+    <div class="chatbot-container" id="chatbotContainer">
+      <div class="chatbot-header">
+        <div class="chatbot-title">
+          <span class="logo-icon material-icons">chat</span> MOSDAC Helper
+        </div>
+        <button class="close-chat" id="closeChat">
+          <span class="material-icons">close</span>
+        </button>
+      </div>
+      <div class="chatbot-iframe-container">
+        <iframe
+          id="chatbotIframe"
+          class="chatbot-iframe"
+          src="about:blank"
+        ></iframe>
+      </div>
+    </div>
+
+    <script>
+      // Cache DOM elements
+      const chatButton = document.getElementById("chatButton");
+      const chatbotContainer = document.getElementById("chatbotContainer");
+      const notificationBadge = document.getElementById("notificationBadge");
+      const closeChat = document.getElementById("closeChat");
+      const chatbotIframe = document.getElementById("chatbotIframe");
+
+      // Toggle chatbot visibility
+      chatButton.addEventListener("click", function () {
+        chatbotContainer.classList.toggle("show-chatbot");
+        notificationBadge.style.display = "none"; // Hide the notification when chatbot is opened
+        loadChatbot();
+      });
+
+      // Close chatbot
+      closeChat.addEventListener("click", function () {
+        chatbotContainer.classList.remove("show-chatbot");
+      });
+
+      // Prevent clicks inside the chatbot from closing it
+      chatbotContainer.addEventListener("click", function (e) {
+        e.stopPropagation();
+      });
+
+      // Load chatbot interface into the iframe
+      function loadChatbot() {
+        if (chatbotIframe.src === "about:blank") {
+          chatbotIframe.src = "mosdac-helper.html"; // Replace with actual chatbot URL
+        }
+      }
+
+      // Function to show the notification badge
+      function showNotification(count = 1) {
+        notificationBadge.textContent = count;
+        notificationBadge.style.display = "flex";
+      }
+
+      // Demo: Show notification again after 30 seconds if chatbot is closed
+      setTimeout(() => {
+        if (!chatbotContainer.classList.contains("show-chatbot")) {
+          showNotification();
+        }
+      }, 30000);
+    </script>
+  </body>
 </html>

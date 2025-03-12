@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MOSDAC Helper</title>
+    <!-- Link to external CSS file -->
+    <link rel="stylesheet" href="style.css" />
+    <!-- Material Icons -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/material-design-icons/3.0.1/iconfont/material-icons.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="chatbot-container">
+      <!-- Sidebar / Chat History -->
+      <div class="sidebar">
+        <div class="sidebar-header">
+          <h2>Chat History</h2>
+          <i class="material-icons user-icon">person</i>
+        </div>
+        <div class="chat-history">
+          <div class="history-item active">
+            <div class="chat-dot"></div>
+            <span>SCATSAT-1 Query</span>
+          </div>
+          <div class="history-item">
+            <div class="chat-dot"></div>
+            <span>Cyclone Data</span>
+          </div>
+          <div class="history-item">
+            <div class="chat-dot"></div>
+            <span>INSAT Info</span>
+          </div>
+          <div class="history-item">
+            <div class="chat-dot"></div>
+            <span>Ocean State Analysis</span>
+          </div>
+          <div class="history-item">
+            <div class="chat-dot"></div>
+            <span>Weather Forecast</span>
+          </div>
+        </div>
+        <button class="new-chat-btn">
+          <i class="material-icons">add</i>
+          New Chat
+        </button>
+      </div>
+
+      <!-- Main Chat Area -->
+      <div class="chat-main">
+        <div class="chat-header">
+          <h2>MOSDAC Helper (Powered by AI)</h2>
+          <button class="close-btn">
+            <i class="material-icons">close</i>
+          </button>
+        </div>
+        <div class="chat-messages">
+          <div class="message bot-message">
+            Hi! I'm MOSDAC Helper, your AI assistant. Ask me about satellite
+            data!
+          </div>
+          <!-- More messages will be added dynamically -->
+        </div>
+        <div class="chat-input-container">
+          <button class="attachment-btn">
+            <i class="material-icons">attach_file</i>
+          </button>
+          <input
+            type="text"
+            class="chat-input"
+            placeholder="Ask me about MOSDAC data..."
+          />
+          <button class="send-btn">
+            <i class="material-icons">send</i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Link to external JavaScript file -->
+    <script src="script.js"></script>
+  </body>
+</html>
