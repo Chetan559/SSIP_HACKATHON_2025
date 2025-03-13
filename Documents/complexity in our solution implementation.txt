@@ -1,0 +1,12 @@
+1.Restricted Data Access:
+Many datasets on MOSDAC are not openly available, which limits the chatbot’s ability to fetch real-time information. Workarounds like web scraping may not be feasible due to access restrictions.
+2.Handling Large-Scale Queries:
+Managing concurrent users with fast responses requires caching and vector indexing.
+3.Data Freshness:
+Since MOSDAC updates its content periodically, ensuring that the chatbot fetches and indexes the latest information without excessive latency is a challenge.
+4.Complex Query Interpretation:
+Understanding satellite-related queries demands resource-intensive NLP fine-tuning.
+5.Deployment and Resource Constraints:
+Hosting a large AI model like Falcon with RAG requires significant computational resources, making cost-effective deployment difficult.
+6.Context Retention for Multi-Turn Conversations:
+Maintaining user context across multiple queries without degrading performance is technically challenging.

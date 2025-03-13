@@ -1,0 +1,23 @@
+Our approach combines modern AI techniques with efficient information retrieval to create a responsive, accurate helpbot for the MOSDAC portal:
+
+1.Data Acquisition Pipeline
+    Implement scheduled web crawlers to index MOSDAC content (pages, PDFs, tables)
+    Convert all content to vector embeddings using domain-tuned BERT models
+    Store in Pinecone vector database for efficient retrieval
+2.Query Processing System
+    Apply NLP preprocessing to understand user intent and extract key entities
+    Implement Retrieval-Augmented Generation (RAG) using the most relevant documents
+    Maintain conversation context through session memory for follow-up questions
+3.Response Generation
+    Deploy QLoRA-optimized Falcon-40B model to reduce resource requirements
+    Fine-tune on satellite data terminology and MOSDAC-specific content
+    Implement citation mechanisms to reference original sources
+4.Performance Optimization
+    Use parallel processing for embedding generation and retrieval
+    Implement caching for frequently requested information
+    Apply quantization techniques to reduce inference time to 5-6 seconds
+5.User Experience Enhancement
+    Design intuitive chat interface with React.js frontend and Flask backend
+    Implement progressive information disclosure (core answers first, details on request)
+    
+This approach balances technical performance with usability while addressing the specific challenges of satellite data retrieval and technical information accessibility.

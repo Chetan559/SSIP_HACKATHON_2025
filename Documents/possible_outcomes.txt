@@ -1,0 +1,6 @@
+1.Faster Information Retrieval – Users can quickly access MOSDAC data via an AI chatbot.
+2.Improved User Experience – Simplifies navigation and understanding of complex satellite data.
+3.Automation of Queries – Reduces manual effort in answering repetitive questions.
+4.Better Data Utilization – More users can leverage satellite data for research and applications.
+5.Scalable & Adaptive System – Improves over time with self-learning capabilities.
+6.Future Integration – Can be expanded to other scientific and government platforms.

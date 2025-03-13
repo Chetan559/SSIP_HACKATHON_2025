@@ -1,0 +1,24 @@
+1.Frontend Development:
+    Technology: React.js
+2.Backend Development:
+    Technology: Python (Flask)
+3.Web Scraping & Data Extraction:
+    Technology: Selenium
+4.Data Storage:
+    Structured Data: PostgreSQL
+    Vector Search Database: Pinecone
+5.AI Model & Natural Language Processing (NLP):
+    Language Model: Falcon 40B
+    Frameworks: Hugging Face Transformers, LangChain.
+6.Deep Learning & Model Training:
+    Technology: PyTorch
+    Platform: Google Colab
+7.Real-Time Communication:
+    Technology: WebSocket.IO
+8.Development & Deployment:
+    IDE & Code Management: VS Code, Jupyter Notebook
+    Version Control: Git & GitHub
+    API Testing: Postman
+9.Media Processing:
+    Optical Character Recognition (OCR): Tesseract OCR
+    Video Processing: FFmpeg

@@ -1,6 +1,6 @@
 // script.js
 // Set ngrok URL here
-const ngrokUrl = "https://ea3e-34-143-219-241.ngrok-free.app/generate"; // Replace with your ngrok URL
+const ngrokUrl = "https://ab70-35-234-168-124.ngrok-free.app/generate"; // Replace with your ngrok URL
 
 document.querySelector(".send-btn").addEventListener("click", function () {
   const inputField = document.querySelector(".chat-input");
