@@ -1,23 +1,24 @@
-Our approach combines modern AI techniques with efficient information retrieval to create a responsive, accurate helpbot for the MOSDAC portal:
+Our approach integrates modern AI techniques with efficient retrieval to create a responsive HelpBot for MOSDAC:  
 
-1.Data Acquisition Pipeline
-    Implement scheduled web crawlers to index MOSDAC content (pages, PDFs, tables)
-    Convert all content to vector embeddings using domain-tuned BERT models
-    Store in Pinecone vector database for efficient retrieval
-2.Query Processing System
-    Apply NLP preprocessing to understand user intent and extract key entities
-    Implement Retrieval-Augmented Generation (RAG) using the most relevant documents
-    Maintain conversation context through session memory for follow-up questions
+1. Data Acquisition Pipeline
+Schedule web crawlers to index MOSDAC content (pages, PDFs, tables).  
+Convert content to vector embeddings using domain-tuned BERT models.  
+Store in Pinecone for efficient retrieval.  
+
+2.Query Processing System 
+Apply NLP preprocessing to extract key entities and user intent.  
+Use RAG with the most relevant documents.  
+Maintain conversation context for follow-ups.  
+
 3.Response Generation
-    Deploy QLoRA-optimized Falcon-40B model to reduce resource requirements
-    Fine-tune on satellite data terminology and MOSDAC-specific content
-    Implement citation mechanisms to reference original sources
+Deploy QLoRA-optimized Falcon-40B for reduced resource use.  
+Fine-tune on satellite data and MOSDAC content.  
+Implement citations for source references.  
+
 4.Performance Optimization
-    Use parallel processing for embedding generation and retrieval
-    Implement caching for frequently requested information
-    Apply quantization techniques to reduce inference time to 5-6 seconds
+Use parallel processing for embedding and retrieval.  
+Implement caching and quantization to reduce response time.  
+
 5.User Experience Enhancement
-    Design intuitive chat interface with React.js frontend and Flask backend
-    Implement progressive information disclosure (core answers first, details on request)
-    
-This approach balances technical performance with usability while addressing the specific challenges of satellite data retrieval and technical information accessibility.
+Design an intuitive React.js frontend with Flask backend.  
+Use progressive disclosure for better readability.
