@@ -1,4 +1,5 @@
-import { Navigate } from "react-router-dom";
+
+import { Navigate } from 'react-router-dom';
 
 const Index = () => {
   return <Navigate to="/dashboard" replace />;

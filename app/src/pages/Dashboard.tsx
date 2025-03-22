@@ -1,11 +1,12 @@
-import React, { useState } from "react";
-import { useIsMobile } from "@/hooks/use-mobile";
-import Header from "@/components/Header";
-import ChatHistory from "@/components/ChatHistory";
-import ChatWindow from "@/components/ChatWindow";
-import ChatInput from "@/components/ChatInput";
-import { Button } from "@/components/ui/button";
-import { Menu, X } from "lucide-react";
+
+import React, { useState } from 'react';
+import { useIsMobile } from '@/hooks/use-mobile';
+import Header from '@/components/Header';
+import ChatHistory from '@/components/ChatHistory';
+import ChatWindow from '@/components/ChatWindow';
+import ChatInput from '@/components/ChatInput';
+import { Button } from '@/components/ui/button';
+import { Menu, X } from 'lucide-react';
 
 const Dashboard = () => {
   const isMobile = useIsMobile();
@@ -14,17 +15,13 @@ const Dashboard = () => {
   return (
     <div className="flex flex-col h-screen">
       <Header />
-
+      
       <div className="flex-1 flex overflow-hidden">
         {/* Chat History Sidebar */}
         <div
           className={`
-            ${showSidebar ? "block" : "hidden"}
-            ${
-              isMobile
-                ? "absolute z-10 inset-0 bg-white animate-fade-in"
-                : "w-80 border-r"
-            }
+            ${showSidebar ? 'block' : 'hidden'}
+            ${isMobile ? 'absolute z-10 inset-0 bg-white animate-fade-in' : 'w-80 border-r'}
           `}
         >
           {isMobile && (
@@ -40,7 +37,7 @@ const Dashboard = () => {
           )}
           <ChatHistory />
         </div>
-
+        
         {/* Main Chat Area */}
         <div className="flex-1 flex flex-col">
           {isMobile && !showSidebar && (
@@ -55,7 +52,7 @@ const Dashboard = () => {
               </Button>
             </div>
           )}
-
+          
           <ChatWindow />
           <ChatInput />
         </div>

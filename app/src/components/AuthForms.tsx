@@ -1,24 +1,25 @@
-import React, { useState } from "react";
-import { useAuth } from "@/context/AuthContext";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Loader2 } from "lucide-react";
+
+import React, { useState } from 'react';
+import { useAuth } from '@/context/AuthContext';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import { Loader2 } from 'lucide-react';
 
 export const LoginForm: React.FC<{ onToggle: () => void }> = ({ onToggle }) => {
   const { login, isLoading } = useAuth();
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setError("");
-
+    setError('');
+    
     try {
       await login(email, password);
     } catch (err) {
-      setError(err instanceof Error ? err.message : "Failed to login");
+      setError(err instanceof Error ? err.message : 'Failed to login');
     }
   };
 
@@ -35,7 +36,7 @@ export const LoginForm: React.FC<{ onToggle: () => void }> = ({ onToggle }) => {
           required
         />
       </div>
-
+      
       <div className="space-y-2">
         <Label htmlFor="password">Password</Label>
         <Input
@@ -47,11 +48,11 @@ export const LoginForm: React.FC<{ onToggle: () => void }> = ({ onToggle }) => {
           required
         />
       </div>
-
+      
       {error && <p className="text-destructive text-sm">{error}</p>}
-
-      <Button
-        type="submit"
+      
+      <Button 
+        type="submit" 
         className="w-full bg-gov-blue hover:bg-gov-navy"
         disabled={isLoading}
       >
@@ -60,13 +61,11 @@ export const LoginForm: React.FC<{ onToggle: () => void }> = ({ onToggle }) => {
             <Loader2 className="mr-2 h-4 w-4 animate-spin" />
             Logging in...
           </>
-        ) : (
-          "Login"
-        )}
+        ) : 'Login'}
       </Button>
-
+      
       <p className="text-center text-sm">
-        Don't have an account?{" "}
+        Don't have an account?{' '}
         <button
           type="button"
           onClick={onToggle}
@@ -79,23 +78,21 @@ export const LoginForm: React.FC<{ onToggle: () => void }> = ({ onToggle }) => {
   );
 };
 
-export const SignupForm: React.FC<{ onToggle: () => void }> = ({
-  onToggle,
-}) => {
+export const SignupForm: React.FC<{ onToggle: () => void }> = ({ onToggle }) => {
   const { signup, isLoading } = useAuth();
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setError("");
-
+    setError('');
+    
     try {
       await signup(email, password, name);
     } catch (err) {
-      setError(err instanceof Error ? err.message : "Failed to sign up");
+      setError(err instanceof Error ? err.message : 'Failed to sign up');
     }
   };
 
@@ -112,7 +109,7 @@ export const SignupForm: React.FC<{ onToggle: () => void }> = ({
           required
         />
       </div>
-
+      
       <div className="space-y-2">
         <Label htmlFor="email">Email</Label>
         <Input
@@ -124,7 +121,7 @@ export const SignupForm: React.FC<{ onToggle: () => void }> = ({
           required
         />
       </div>
-
+      
       <div className="space-y-2">
         <Label htmlFor="password">Password</Label>
         <Input
@@ -140,11 +137,11 @@ export const SignupForm: React.FC<{ onToggle: () => void }> = ({
           Password must be at least 6 characters long
         </p>
       </div>
-
+      
       {error && <p className="text-destructive text-sm">{error}</p>}
-
-      <Button
-        type="submit"
+      
+      <Button 
+        type="submit" 
         className="w-full bg-gov-blue hover:bg-gov-navy"
         disabled={isLoading}
       >
@@ -153,13 +150,11 @@ export const SignupForm: React.FC<{ onToggle: () => void }> = ({
             <Loader2 className="mr-2 h-4 w-4 animate-spin" />
             Creating account...
           </>
-        ) : (
-          "Create Account"
-        )}
+        ) : 'Create Account'}
       </Button>
-
+      
       <p className="text-center text-sm">
-        Already have an account?{" "}
+        Already have an account?{' '}
         <button
           type="button"
           onClick={onToggle}

@@ -1,3 +1,4 @@
+
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -14,38 +15,30 @@ const queryClient = new QueryClient();
 // Protected route component
 const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
   const { user, isLoading } = useAuth();
-
+  
   if (isLoading) {
-    return (
-      <div className="min-h-screen flex items-center justify-center">
-        Loading...
-      </div>
-    );
+    return <div className="min-h-screen flex items-center justify-center">Loading...</div>;
   }
-
+  
   if (!user) {
     return <Navigate to="/login" replace />;
   }
-
+  
   return <>{children}</>;
 };
 
 // Public route that redirects if logged in
 const PublicRoute = ({ children }: { children: React.ReactNode }) => {
   const { user, isLoading } = useAuth();
-
+  
   if (isLoading) {
-    return (
-      <div className="min-h-screen flex items-center justify-center">
-        Loading...
-      </div>
-    );
+    return <div className="min-h-screen flex items-center justify-center">Loading...</div>;
   }
-
+  
   if (user) {
     return <Navigate to="/dashboard" replace />;
   }
-
+  
   return <>{children}</>;
 };
 
@@ -53,23 +46,23 @@ const AppRoutes = () => (
   <BrowserRouter>
     <Routes>
       <Route path="/" element={<Navigate to="/dashboard" replace />} />
-      <Route
-        path="/login"
+      <Route 
+        path="/login" 
         element={
           <PublicRoute>
             <Login />
           </PublicRoute>
-        }
+        } 
       />
-      <Route
-        path="/dashboard"
+      <Route 
+        path="/dashboard" 
         element={
           <ProtectedRoute>
             <ChatProvider>
               <Dashboard />
             </ChatProvider>
           </ProtectedRoute>
-        }
+        } 
       />
       <Route path="*" element={<NotFound />} />
     </Routes>

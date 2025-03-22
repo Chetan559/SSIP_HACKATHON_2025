@@ -1,13 +1,13 @@
-import React from "react";
-import { useChat } from "@/context/ChatContext";
-import { Button } from "@/components/ui/button";
-import { PlusCircle, MessageSquare } from "lucide-react";
-import { cn } from "@/lib/utils";
-import { format } from "date-fns";
+
+import React from 'react';
+import { useChat } from '@/context/ChatContext';
+import { Button } from '@/components/ui/button';
+import { PlusCircle, MessageSquare } from 'lucide-react';
+import { cn } from '@/lib/utils';
+import { format } from 'date-fns';
 
 const ChatHistory: React.FC = () => {
-  const { sessions, currentSession, createNewSession, selectSession } =
-    useChat();
+  const { sessions, currentSession, createNewSession, selectSession } = useChat();
 
   return (
     <div className="w-full h-full flex flex-col">
@@ -21,7 +21,7 @@ const ChatHistory: React.FC = () => {
           <span>New Chat</span>
         </Button>
       </div>
-
+      
       <div className="flex-1 overflow-y-auto py-2">
         {sessions.length === 0 ? (
           <div className="p-4 text-center text-muted-foreground">
@@ -45,7 +45,7 @@ const ChatHistory: React.FC = () => {
                 {session.lastMessage}
               </div>
               <div className="text-xs text-muted-foreground pl-6">
-                {format(session.updatedAt, "MMM d, h:mm a")}
+                {format(session.updatedAt, 'MMM d, h:mm a')}
               </div>
             </button>
           ))

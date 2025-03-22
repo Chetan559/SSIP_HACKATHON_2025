@@ -1,11 +1,12 @@
-import React, { useState, useRef, useEffect } from "react";
-import { useChat } from "@/context/ChatContext";
-import { Button } from "@/components/ui/button";
-import { Send } from "lucide-react";
+
+import React, { useState, useRef, useEffect } from 'react';
+import { useChat } from '@/context/ChatContext';
+import { Button } from '@/components/ui/button';
+import { Send } from 'lucide-react';
 
 const ChatInput: React.FC = () => {
   const { sendMessage, isLoading } = useChat();
-  const [input, setInput] = useState("");
+  const [input, setInput] = useState('');
   const inputRef = useRef<HTMLTextAreaElement>(null);
 
   useEffect(() => {
@@ -16,12 +17,12 @@ const ChatInput: React.FC = () => {
   const handleSendMessage = async () => {
     if (input.trim() && !isLoading) {
       await sendMessage(input.trim());
-      setInput("");
+      setInput('');
     }
   };
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
-    if (e.key === "Enter" && !e.shiftKey) {
+    if (e.key === 'Enter' && !e.shiftKey) {
       e.preventDefault();
       handleSendMessage();
     }
@@ -40,7 +41,7 @@ const ChatInput: React.FC = () => {
           onKeyDown={handleKeyDown}
           disabled={isLoading}
         />
-        <Button
+        <Button 
           onClick={handleSendMessage}
           disabled={!input.trim() || isLoading}
           className="bg-gov-blue hover:bg-gov-navy transition-colors rounded-full p-3 h-auto w-auto"
