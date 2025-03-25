@@ -54,10 +54,10 @@ export const ChatProvider: React.FC<{ children: React.ReactNode }> = ({
       // Convert data to match our ChatSession type
       const formattedSessions: ChatSession[] = sessionsData.map(
         (session: any) => ({
-          id: session.id.toString(),
-          title: session.title,
+          id: session.id ? session.id.toString() : "",
+          title: session.title || `Chat ${sessionsData.indexOf(session) + 1}`,
           lastMessage: session.last_message || "Start a new conversation",
-          updatedAt: new Date(session.updated_at),
+          updatedAt: new Date(session.updated_at || Date.now()),
           messages: [],
         })
       );
@@ -85,12 +85,13 @@ export const ChatProvider: React.FC<{ children: React.ReactNode }> = ({
     try {
       const messagesData = await chatService.getMessages(sessionId);
 
-      // Convert data to match our Message type
+      // Convert data to match our Message type with null checks
       const formattedMessages: Message[] = messagesData.map((msg: any) => ({
-        id: msg.id.toString(),
-        content: msg.content,
-        sender: msg.sender as "user" | "bot",
-        timestamp: new Date(msg.timestamp),
+        id: msg.id ? msg.id.toString() : `temp-${Date.now()}-${Math.random()}`,
+        content: msg.content || "",
+        // Use 'user' or 'bot' as sender values for UI rendering
+        sender: msg.sender === "bot" ? "bot" : "user",
+        timestamp: new Date(msg.timestamp || Date.now()),
       }));
 
       // Update the session with loaded messages
@@ -189,49 +190,29 @@ export const ChatProvider: React.FC<{ children: React.ReactNode }> = ({
       });
 
       // Send message to backend
-      await chatService.sendMessage(currentSession.id, content);
+      const response = await chatService.sendMessage(
+        currentSession.id,
+        content
+      );
 
-      // Simulate a delay for the bot response
-      await new Promise((resolve) => setTimeout(resolve, 1000));
+      if (response && response.reply) {
+        // Use the actual bot response from the backend
+        const botMessage: Message = {
+          id: `bot-${Date.now()}`,
+          content: response.reply,
+          sender: "bot",
+          timestamp: new Date(),
+        };
 
-      // Sample bot responses (in a real app, this would come from the backend)
-      const botResponses = [
-        "Thank you for your question. I'm here to help you with government services.",
-        "That's a great question about our services. Let me provide you with some information.",
-        "I understand your concern. Here's what you need to know about this topic.",
-        "Based on your query, I can direct you to the right department for more assistance.",
-        "The information you're looking for can be found on our official website. Would you like me to provide a direct link?",
-        "I'm processing your request. This might take a moment.",
-        "For security reasons, please do not share any personal identification details in this chat.",
-        "To better assist you, could you please provide more specific details about your query?",
-        "This information is handled by a different department. I'm directing your query to the appropriate channel.",
-      ];
+        const updatedMessagesWithBot = [...updatedMessages, botMessage];
 
-      // Pick a random response
-      const randomResponse =
-        botResponses[Math.floor(Math.random() * botResponses.length)];
-
-      const botMessage: Message = {
-        id: `temp-bot-${Date.now()}`,
-        content: randomResponse,
-        sender: "bot",
-        timestamp: new Date(),
-      };
-
-      const updatedMessagesWithBot = [...updatedMessages, botMessage];
-
-      // Update session with bot response
-      updateSessionLocally(currentSession.id, {
-        messages: updatedMessagesWithBot,
-        lastMessage: randomResponse,
-        updatedAt: new Date(),
-      });
-
-      // Note: In a real implementation, you would send the bot message to the backend too
-      // and then refresh messages from the server to ensure consistency
-
-      // Reload sessions after sending message to get the latest state
-      loadSessions();
+        // Update session with bot response
+        updateSessionLocally(currentSession.id, {
+          messages: updatedMessagesWithBot,
+          lastMessage: response.reply,
+          updatedAt: new Date(),
+        });
+      }
     } catch (error) {
       console.error("Error sending message:", error);
       toast({

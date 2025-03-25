@@ -1,9 +1,25 @@
 from flask import Blueprint, request, jsonify
 from . import db, bcrypt
 from .models import User, ChatSession, Message
+import random
+from datetime import datetime
 from flask_jwt_extended import create_access_token, jwt_required, get_jwt_identity
 
 main = Blueprint('main', __name__)
+
+
+
+botResponses = [
+    "Thank you for your question. I'm here to help you with government services.",
+    "That's a great question about our services. Let me provide you with some information.",
+    "I understand your concern. Here's what you need to know about this topic.",
+    "Based on your query, I can direct you to the right department for more assistance.",
+    "The information you're looking for can be found on our official website. Would you like me to provide a direct link?",
+    "I'm processing your request. This might take a moment.",
+    "For security reasons, please do not share any personal identification details in this chat.",
+    "To better assist you, could you please provide more specific details about your query?",
+    "This information is handled by a different department. I'm directing your query to the appropriate channel.",
+]
 
 # Signup
 @main.route('/api/signup', methods=['POST'])
@@ -58,10 +74,33 @@ def get_messages(session_id):
 @main.route('/api/sessions/<int:session_id>/msg', methods=['POST'])
 @jwt_required()
 def send_message(session_id):
+    print("Received message request for session:", session_id)
     data = request.json
-    message = Message(session_id=session_id, sender=data['sender'], content=data['content'])
-    db.session.add(message)
+    print("Request data:", data)
+    user_id = get_jwt_identity()
+    print("User ID:", user_id)
+
+    # Save user message
+    user_message = Message(session_id=session_id, sender="user", content=data['content'])
+    db.session.add(user_message)
+    
+    # Generate a bot response
+    bot_response = random.choice(botResponses)
+    
+    # Save bot response
+    bot_message = Message(session_id=session_id, sender="bot", content=bot_response)
+    db.session.add(bot_message)
+
+    # Update session last message
     session = ChatSession.query.get(session_id)
-    session.last_message = data['content']
+    if session:
+        session.last_message = data['content']
+        session.updated_at = datetime.utcnow()
+
     db.session.commit()
-    return jsonify({"message": "Message sent"}), 201
+    print("Bot response:", bot_response)
+
+    return jsonify({
+        "message": "Message sent",
+        "bot_response": bot_response
+    }), 201
