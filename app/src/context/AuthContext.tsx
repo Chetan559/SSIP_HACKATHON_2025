@@ -1,6 +1,9 @@
-
-import React, { createContext, useContext, useState, useEffect } from 'react';
-import { toast } from '@/components/ui/use-toast';
+import React, { createContext, useContext, useState, useEffect } from "react";
+import { toast } from "@/components/ui/use-toast";
+import authService, {
+  LoginCredentials,
+  SignupCredentials,
+} from "@/services/authService";
 
 type User = {
   id: string;
@@ -21,19 +24,23 @@ const AuthContext = createContext<AuthContextType | undefined>(undefined);
 export const useAuth = () => {
   const context = useContext(AuthContext);
   if (!context) {
-    throw new Error('useAuth must be used within an AuthProvider');
+    throw new Error("useAuth must be used within an AuthProvider");
   }
   return context;
 };
 
-export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
+  children,
+}) => {
   const [user, setUser] = useState<User | null>(null);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    // Check if user is stored in localStorage
-    const storedUser = localStorage.getItem('user');
-    if (storedUser) {
+    // Check if user and token are stored in localStorage
+    const storedToken = localStorage.getItem("token");
+    const storedUser = localStorage.getItem("user");
+
+    if (storedToken && storedUser) {
       setUser(JSON.parse(storedUser));
     }
     setIsLoading(false);
@@ -42,31 +49,24 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const login = async (email: string, password: string) => {
     setIsLoading(true);
     try {
-      // This would be replaced with actual API call in a real application
-      // Simulating API delay
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      
-      // For demo purposes, accept any email that looks valid and any password
-      if (!email.includes('@')) {
-        throw new Error('Invalid email format');
-      }
-      
-      const mockUser = {
-        id: Math.random().toString(36).substr(2, 9),
-        email,
-        name: email.split('@')[0],
-      };
-      
-      setUser(mockUser);
-      localStorage.setItem('user', JSON.stringify(mockUser));
+      const credentials: LoginCredentials = { email, password };
+      const response = await authService.login(credentials);
+
+      // Store token and user data
+      localStorage.setItem("token", response.token);
+      localStorage.setItem("user", JSON.stringify(response.user));
+
+      setUser(response.user);
+
       toast({
         title: "Login successful",
-        description: `Welcome back, ${mockUser.name}!`,
+        description: `Welcome back, ${response.user.name}!`,
       });
     } catch (error) {
+      console.error("Login error:", error);
       toast({
         title: "Login failed",
-        description: error instanceof Error ? error.message : "Something went wrong",
+        description: "Invalid email or password. Please try again.",
         variant: "destructive",
       });
       throw error;
@@ -78,33 +78,24 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const signup = async (email: string, password: string, name: string) => {
     setIsLoading(true);
     try {
-      // Simulating API delay
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      
-      if (!email.includes('@')) {
-        throw new Error('Invalid email format');
-      }
-      
-      if (password.length < 6) {
-        throw new Error('Password must be at least 6 characters');
-      }
-      
-      const mockUser = {
-        id: Math.random().toString(36).substr(2, 9),
-        email,
-        name,
-      };
-      
-      setUser(mockUser);
-      localStorage.setItem('user', JSON.stringify(mockUser));
+      const credentials: SignupCredentials = { email, password, name };
+      const response = await authService.signup(credentials);
+
+      // Store token and user data
+      localStorage.setItem("token", response.token);
+      localStorage.setItem("user", JSON.stringify(response.user));
+
+      setUser(response.user);
+
       toast({
         title: "Account created",
         description: `Welcome, ${name}!`,
       });
     } catch (error) {
+      console.error("Signup error:", error);
       toast({
         title: "Signup failed",
-        description: error instanceof Error ? error.message : "Something went wrong",
+        description: "Could not create your account. Please try again.",
         variant: "destructive",
       });
       throw error;
@@ -115,7 +106,8 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
   const logout = () => {
     setUser(null);
-    localStorage.removeItem('user');
+    localStorage.removeItem("token");
+    localStorage.removeItem("user");
     toast({
       title: "Logged out",
       description: "You have been successfully logged out",

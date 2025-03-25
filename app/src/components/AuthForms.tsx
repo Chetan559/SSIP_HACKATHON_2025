@@ -16,7 +16,7 @@ export const LoginForm: React.FC<{ onToggle: () => void }> = ({ onToggle }) => {
     setError("");
 
     try {
-      await login(email, password);
+      await login(email, password); // Ensure login function matches expected parameters
     } catch (err) {
       setError(err instanceof Error ? err.message : "Failed to login");
     }
@@ -93,7 +93,7 @@ export const SignupForm: React.FC<{ onToggle: () => void }> = ({
     setError("");
 
     try {
-      await signup(email, password, name);
+      await signup(email, password, name); // Ensure all three required arguments are passed
     } catch (err) {
       setError(err instanceof Error ? err.message : "Failed to sign up");
     }

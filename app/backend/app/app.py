@@ -6,9 +6,11 @@ from routes.chat_routes import chat
 
 app = Flask(__name__)
 app.config['JWT_SECRET_KEY'] = 'super-secret-key'  # Use env var in production
-CORS(app)
-jwt = JWTManager(app)
+CORS(app, resources={r"/*": {"origins": "http://localhost:5173", "supports_credentials": True}})
 
+
+
+jwt = JWTManager(app)
 app.register_blueprint(auth)
 app.register_blueprint(chat)
 
