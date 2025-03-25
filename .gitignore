@@ -132,3 +132,5 @@ sysinfo.md
 
 
 app/backend/venv
+app/backend/app/__pycache__
+app/backend/.pytest_cache
