@@ -156,13 +156,25 @@ export const ChatProvider: React.FC<{ children: ReactNode }> = ({
       setIsLoading(true);
 
       try {
-        // Optimistic update for user message
+        // Add user message immediately for better UX
+        const tempUserMessageId = `temp-user-${Date.now()}`;
         const userMessage: Message = {
-          id: `temp-${Date.now()}`,
+          id: tempUserMessageId,
           content,
           sender: "user",
           timestamp: new Date(),
         };
+
+        // Update session with user message
+        setCurrentSession((prev) => {
+          if (!prev) return null;
+          return {
+            ...prev,
+            messages: [...prev.messages, userMessage],
+            lastMessage: content,
+            updatedAt: new Date(),
+          };
+        });
 
         setSessions((prev) =>
           prev.map((session) =>
@@ -177,30 +189,30 @@ export const ChatProvider: React.FC<{ children: ReactNode }> = ({
           )
         );
 
-        setCurrentSession((prev) =>
-          prev?.id === currentSession.id
-            ? {
-                ...prev,
-                messages: [...prev.messages, userMessage],
-                lastMessage: content,
-                updatedAt: new Date(),
-              }
-            : prev
-        );
-
-        // Send to backend and get response
+        // Send message to backend and get response
         const response = await chatService.sendMessage(
           currentSession.id,
           content
         );
 
-        if (response?.reply) {
+        // Add bot response message
+        if (response?.botMessage) {
           const botMessage: Message = {
             id: `bot-${Date.now()}`,
-            content: response.reply,
+            content: response.botMessage.content,
             sender: "bot",
             timestamp: new Date(),
           };
+
+          setCurrentSession((prev) => {
+            if (!prev) return null;
+            return {
+              ...prev,
+              messages: [...prev.messages, botMessage],
+              lastMessage: response.botMessage.content,
+              updatedAt: new Date(),
+            };
+          });
 
           setSessions((prev) =>
             prev.map((session) =>
@@ -208,22 +220,11 @@ export const ChatProvider: React.FC<{ children: ReactNode }> = ({
                 ? {
                     ...session,
                     messages: [...session.messages, botMessage],
-                    lastMessage: response.reply,
+                    lastMessage: response.botMessage.content,
                     updatedAt: new Date(),
                   }
                 : session
             )
-          );
-
-          setCurrentSession((prev) =>
-            prev?.id === currentSession.id
-              ? {
-                  ...prev,
-                  messages: [...prev.messages, botMessage],
-                  lastMessage: response.reply,
-                  updatedAt: new Date(),
-                }
-              : prev
           );
         }
       } catch (error) {
@@ -232,6 +233,7 @@ export const ChatProvider: React.FC<{ children: ReactNode }> = ({
           description: "Failed to send message",
           variant: "destructive",
         });
+        console.error("Error sending message:", error);
       } finally {
         setIsLoading(false);
       }

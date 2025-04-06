@@ -16,7 +16,7 @@ def create_app():
     app = Flask(__name__)
     
     # Updated CORS configuration:
-    CORS(app, supports_credentials=True, origins=["http://localhost:5173"])
+    CORS(app, supports_credentials=True, origins=["http://localhost:5173", "http://192.168.1.11:5173/"])
     
     app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv("DATABASE_URL")
     app.config['JWT_SECRET_KEY'] = os.getenv("JWT_SECRET_KEY")

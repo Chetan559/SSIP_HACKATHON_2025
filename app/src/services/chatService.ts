@@ -28,12 +28,30 @@ const chatService = {
         sender: "user",
         content,
       });
-      return response.data;
+      return {
+        userMessage: {
+          content: content,
+          sender: "user",
+        },
+        botMessage: {
+          content: response.data.bot_response || "No response",
+          sender: "bot",
+        },
+      };
     } catch (error) {
       // If that fails, try the chat endpoint which is used for simpler implementations
       console.log("Falling back to /chat endpoint");
       const chatResponse = await api.post("/chat", { message: content });
-      return chatResponse.data;
+      return {
+        userMessage: {
+          content: content,
+          sender: "user",
+        },
+        botMessage: {
+          content: chatResponse.data.reply || "No response",
+          sender: "bot",
+        },
+      };
     }
   },
 };

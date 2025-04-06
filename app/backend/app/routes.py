@@ -1,4 +1,5 @@
 from flask import Blueprint, request, jsonify
+import requests
 from . import db, bcrypt
 from .models import User, ChatSession, Message
 import random
@@ -6,7 +7,6 @@ from datetime import datetime
 from flask_jwt_extended import create_access_token, jwt_required, get_jwt_identity
 
 main = Blueprint('main', __name__)
-
 
 
 botResponses = [
@@ -85,11 +85,30 @@ def send_message(session_id):
     db.session.add(user_message)
     
     # Generate a bot response
-    bot_response = random.choice(botResponses)
+    # bot_response = random.choice(botResponses)   # random response from predefined list
     
+    # Forward user query to external API
+    try:
+        print("inside try")
+        API_URL = "https://05b9-34-125-76-201.ngrok-free.app/generate"
+        response = requests.post(API_URL, json={"user_query": data['content']}, timeout=1000)
+        
+        if response.status_code == 200:
+            bot_response = response.json().get("generated_text", "I'm sorry, I couldn't fetch the information.")
+        else:
+            bot_response = "There was an issue retrieving the information. Please try again later."
+            
+    except requests.exceptions.RequestException as e:
+    # except Exception as e:
+        # print(e)
+        print("API request failed:", e)
+        bot_response = "I'm currently unable to fetch the required information. Please try again later."
+
     # Save bot response
     bot_message = Message(session_id=session_id, sender="bot", content=bot_response)
     db.session.add(bot_message)
+
+
 
     # Update session last message
     session = ChatSession.query.get(session_id)
@@ -104,3 +123,23 @@ def send_message(session_id):
         "message": "Message sent",
         "bot_response": bot_response
     }), 201
+# def send_message(session_id):
+#     print("Received message request for session:", session_id)
+#     data = request.json
+#     print("Request data:", data)
+#     user_id = get_jwt_identity()
+#     print("User ID:", user_id)
+
+#     # Save user message
+#     user_message = Message(session_id=session_id, sender="user", content=data['content'])
+#     db.session.add(user_message)
+
+
+#     db.session.commit()
+#     print("Bot response:", bot_response)
+
+#     return jsonify({
+#         "message": "Message sent",
+#         "bot_response": bot_response
+#     }), 201
+
